@@ -5,10 +5,11 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+appslistgen () {
 
 # Generates App List
 ls -la /pg/apps/ | sed -e 's/.yml//g' |
-    awk '{print $9}' | tail -n +4 >>/var/plexguide/app.list
+    awk '{print $9}' | tail -n +4 >>/pg/var/app.list
 
 ls -la /opt/mycontainers/ | sed -e 's/.yml//g' |
     awk '{print $9}' | tail -n +4 >>/var/plexguide/app.list
@@ -28,3 +29,5 @@ sed -i "/^_templates.yml\b/Id" /var/plexguide/app.list
 sed -i -e "/oauth/d" /var/plexguide/app.list
 sed -i -e "/dockergc/d" /var/plexguide/app.list
 sed -i -e "/pgui/d" /var/plexguide/app.list
+
+}
